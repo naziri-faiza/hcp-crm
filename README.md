@@ -3,12 +3,10 @@
 An enterprise-style AI-powered Customer Relationship Management (CRM) module designed for Healthcare Professionals (HCPs). The application enables medical representatives to log HCP interactions using natural language, while an AI Assistant automatically extracts structured information and populates the interaction form.
 
 ---
-## System Architecture
-![System Architecture](d/images/Gemini_Generated_Image_vrncpivrncpivrnc.png)
+
 ## 🚀 Project Overview
 
 The AI-First CRM HCP Module combines modern full-stack development with Generative AI to streamline HCP interaction logging.
-
 Users simply describe an interaction in natural language, and the AI Assistant extracts structured information such as HCP details, meeting topics, outcomes, follow-up actions, and more. The extracted data is automatically populated into the CRM form, where users can review, edit, and save the interaction to PostgreSQL.
 
 ---
@@ -283,7 +281,3 @@ Technologies:
 React • FastAPI • PostgreSQL • LangGraph • Groq • Redux Toolkit • Material UI
 
 ---
-
-# 📄 License
-
-This project was developed as part of the **Round 1 AI-First CRM HCP Module Assignment**.
