@@ -1,77 +1,100 @@
-# 🩺 AI-First CRM HCP Module
+# 🩺 AI-First CRM — HCP Interaction Module
 
-An enterprise-style AI-powered Customer Relationship Management (CRM) module designed for Healthcare Professionals (HCPs). The application enables medical representatives to log HCP interactions using natural language, while an AI Assistant automatically extracts structured information and populates the interaction form.
-
----
+An AI-powered Customer Relationship Management module that helps medical representatives record Healthcare Professional (HCP) interactions using natural language. A LangGraph-powered AI assistant extracts structured information, populates the interaction form, and helps users manage interaction records efficiently.
 
 ## 🚀 Project Overview
 
-The AI-First CRM HCP Module combines modern full-stack development with Generative AI to streamline HCP interaction logging.
-Users simply describe an interaction in natural language, and the AI Assistant extracts structured information such as HCP details, meeting topics, outcomes, follow-up actions, and more. The extracted data is automatically populated into the CRM form, where users can review, edit, and save the interaction to PostgreSQL.
+AI-First CRM combines modern full-stack development with Generative AI to simplify healthcare interaction management.
 
----
+Instead of filling every field manually, users can describe a meeting in natural language. The AI assistant extracts relevant details, suggests follow-up actions, and prepares structured data that users can review, edit, and save to PostgreSQL.
 
-# ✨ Key Features
+## ✨ Key Features
 
-- 🤖 AI-powered interaction logging
-- 💬 AI Assistant chat interface
-- 📝 Automatic form population
-- ✏️ Manual editing after AI extraction
-- 💾 Save interactions to PostgreSQL
-- 🔍 Search existing interactions
-- 📄 Interaction summarization
-- 💡 AI-generated follow-up suggestions
-- 📱 Responsive enterprise UI
-- 🎨 Modern Material UI components
-- 🔔 Toast notifications
-- ⏳ AI loading spinner
-- 🏷️ AI Filled badge for auto-populated fields
+- 🤖 **AI-Powered Interaction Logging** — Extract structured details from natural-language input.
+- 💬 **Conversational AI Assistant** — Interact with the CRM through chat.
+- 📝 **Automatic Form Population** — Populate interaction fields from AI-extracted data.
+- ✏️ **Editable AI Results** — Review and modify generated information before saving.
+- 💾 **Interaction Management** — Create, retrieve, update, and delete interaction records.
+- 🔍 **Interaction Search** — Find previously recorded interactions.
+- 📄 **AI Summarization** — Generate concise interaction summaries.
+- 💡 **Follow-up Suggestions** — Generate actionable next steps.
+- 🔔 **User Feedback** — Toast notifications and loading indicators.
+- 📱 **Responsive Interface** — A modern interface designed for convenient interaction management.
 
----
+## 🛠️ Tech Stack
 
-# 🛠 Tech Stack
+| Category | Technologies |
+|---|---|
+| Frontend | React.js, Redux Toolkit, Material UI, Axios, React Router |
+| Backend | FastAPI, Python, SQLAlchemy, Pydantic |
+| Database | PostgreSQL |
+| Database Migrations | Alembic |
+| AI Orchestration | LangGraph |
+| LLM Provider | Groq API |
+| Default AI Model | Gemma 2 9B IT |
+| Fallback AI Model | Llama 3.3 70B Versatile |
+| API Testing | Postman |
+| Development Tools | Git, GitHub |
 
-## Frontend
+## 🧠 AI Workflow
 
-- React.js
-- Redux Toolkit
-- Material UI
-- Axios
-- React Router
-
-## Backend
-
-- FastAPI
-- SQLAlchemy
-- Alembic
-- Pydantic
-
-## Database
-
-- PostgreSQL
-
-## AI
-
-- LangGraph
-- Groq API
-- Gemma2-9B-IT
-- Llama 3.3 70B (Fallback)
-
----
-
-# 📁 Project Structure
-
+```mermaid
+flowchart TD
+    A[User describes an HCP interaction] --> B[AI Assistant Chat]
+    B --> C[LangGraph Workflow]
+    C --> D[Groq LLM]
+    D --> E[Structured Interaction Data]
+    E --> F[Auto-populated CRM Form]
+    F --> G[User Reviews and Edits]
+    G --> H[FastAPI Backend]
+    H --> I[(PostgreSQL Database)]
 ```
-AI-First_CRM
-│
+
+## 🤖 LangGraph AI Tools
+
+The AI assistant supports five interaction-management capabilities:
+
+1. **Log Interaction** — Extract details and prepare a structured interaction.
+2. **Edit Interaction** — Modify interaction information based on user instructions.
+3. **Search Interaction** — Find relevant existing interactions.
+4. **Generate Follow-up Suggestions** — Recommend next steps based on interaction details.
+5. **Summarize Interaction** — Produce a concise summary of an interaction.
+
+## 🗄️ Database
+
+PostgreSQL stores structured interaction records, including relevant information such as:
+
+- Healthcare Professional details
+- Hospital and meeting information
+- Discussion topics and outcomes
+- Follow-up actions
+- AI-generated summaries
+
+SQLAlchemy handles database operations, while Alembic manages schema migrations.
+
+## 🔌 API Endpoints
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| POST | `/interactions` | Create an interaction |
+| GET | `/interactions` | Retrieve interactions |
+| PUT | `/interactions/{id}` | Update an interaction |
+| DELETE | `/interactions/{id}` | Delete an interaction |
+| POST | `/ai/chat` | Process AI assistant messages |
+
+Refer to the backend's API documentation for request formats, response schemas, and validation details.
+
+## 📁 Project Structure
+
+```text
+AI-First_CRM/
 ├── frontend/
-│   ├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── redux/
-│   ├── services/
-│   └── App.jsx
-│
+│   └── src/
+│       ├── components/
+│       ├── pages/
+│       ├── redux/
+│       ├── services/
+│       └── App.jsx
 ├── backend/
 │   ├── app/
 │   │   ├── api/
@@ -80,204 +103,120 @@ AI-First_CRM
 │   │   ├── services/
 │   │   ├── langgraph/
 │   │   └── main.py
-│   │
 │   ├── alembic/
 │   ├── requirements.txt
 │   └── .env.example
-│
 ├── README.md
 └── .gitignore
 ```
 
----
+*Directory names may vary depending on the actual repository structure.*
 
-# 🤖 AI Workflow
+## ⚙️ Getting Started
 
-```
-User Prompt
-      │
-      ▼
-AI Assistant Chat
-      │
-      ▼
-LangGraph Workflow
-      │
-      ▼
-Groq LLM
-      │
-      ▼
-Structured JSON
-      │
-      ▼
-Auto-fill CRM Form
-      │
-      ▼
-User Review & Edit
-      │
-      ▼
-Save to PostgreSQL
+### Prerequisites
+
+- Python 3.10 or a compatible version specified by the project
+- Node.js and npm
+- PostgreSQL
+- A Groq API key
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/naziri-faiza/hcp-crm.git
+cd hcp-crm
 ```
 
----
-
-# 🧠 LangGraph Tools
-
-The application implements five AI tools:
-
-### 1. Log Interaction
-
-Creates a structured HCP interaction from natural language.
-
----
-
-### 2. Edit Interaction
-
-Updates an existing interaction based on user input.
-
----
-
-### 3. Search Interaction
-
-Searches previous HCP interactions.
-
----
-
-### 4. Generate Follow-up Suggestions
-
-Provides AI-generated follow-up recommendations.
-
----
-
-### 5. Summarize Interaction
-
-Generates a concise summary of the interaction.
-
----
-
-# 🗄 Database
-
-PostgreSQL is used to store:
-
-- HCP Details
-- Hospital Information
-- Meeting Information
-- Discussion Topics
-- Follow-up Actions
-- AI Generated Summary
-
----
-
-# 🔌 API Endpoints
-
-| Method | Endpoint | Description |
-|---------|----------|-------------|
-| POST | `/interactions` | Create interaction |
-| GET | `/interactions` | Get all interactions |
-| PUT | `/interactions/{id}` | Update interaction |
-| DELETE | `/interactions/{id}` | Delete interaction |
-| POST | `/ai/chat` | AI interaction extraction |
-
----
-
-# ⚙ Environment Variables
-
-Create a `.env` file inside the backend directory.
-
-```env
-DATABASE_URL=postgresql://username:password@localhost:5432/hcp_crm
-
-GROQ_API_KEY=your_groq_api_key
-
-AI_MODEL_DEFAULT=gemma2-9b-it
-
-AI_MODEL_FALLBACK=llama-3.3-70b-versatile
-```
-
----
-
-# ▶ Running the Project
-
-## Backend
+### 2. Configure the backend
 
 ```bash
 cd backend
-
 python -m venv venv
+```
 
+On Windows:
+
+```bash
 venv\Scripts\activate
+```
 
+Install dependencies:
+
+```bash
 pip install -r requirements.txt
+```
 
+Create a `.env` file inside `backend/`:
+
+```env
+DATABASE_URL=postgresql://username:password@localhost:5432/hcp_crm
+GROQ_API_KEY=your_groq_api_key
+AI_MODEL_DEFAULT=gemma2-9b-it
+AI_MODEL_FALLBACK=llama-3.3-70b-versatile
+```
+
+Replace the database credentials and API key with your own values. Keep `.env` out of version control.
+
+Run database migrations:
+
+```bash
 alembic upgrade head
+```
 
+Start the backend:
+
+```bash
 uvicorn app.main:app --reload
 ```
 
-Backend:
+Backend: `http://localhost:8000`
 
-```
-http://localhost:8000
-```
+API documentation: `http://localhost:8000/docs`
 
-Swagger:
+### 3. Configure the frontend
 
-```
-http://localhost:8000/docs
-```
-
----
-
-## Frontend
+Open a second terminal:
 
 ```bash
 cd frontend
-
 npm install
-
 npm run dev
 ```
 
-Frontend:
+Open the local frontend URL printed by Vite in your terminal, typically `http://localhost:5173`.
 
-```
-http://localhost:5173
-```
+## 📸 Screenshots
 
----
+Add actual screenshots of the application here to demonstrate its interface and functionality.
 
-# 📸 Screenshots
-
-Add screenshots here.
+Recommended screenshots:
 
 - Dashboard
-- AI Assistant
-- Interaction Form
-- AI Auto Fill
-- Search
-- Summary
-- PostgreSQL Data
+- AI Assistant chat
+- Interaction form
+- AI-populated fields
+- Interaction search results
+- Generated summary
 
----
+Store screenshots in a directory such as `docs/screenshots/` and embed them using Markdown image links once the files exist.
 
-# 🎯 Future Improvements
+## 🔮 Future Improvements
 
-- Voice Input
-- OCR Integration
-- Calendar Integration
-- Email Follow-up
-- Analytics Dashboard
-- Multi-language Support
-- Authentication & Authorization
+- Voice-based interaction logging
+- OCR-assisted data extraction
+- Calendar integration
+- Email-based follow-up reminders
+- Analytics and reporting dashboard
+- Multilingual AI assistance
+- Authentication and authorization enhancements
 
----
-
-# 👩‍💻 Developed By
+## 👩‍💻 Developed By
 
 **Naziri Faiza**
 
-MCA Graduate | Python Developer | AI Application Developer
+MCA Graduate | Full Stack Developer | AI Application Developer
 
-Technologies:
-React • FastAPI • PostgreSQL • LangGraph • Groq • Redux Toolkit • Material UI
+**Technologies:** React.js · FastAPI · PostgreSQL · LangGraph · Groq · Redux Toolkit
 
----
+[GitHub](https://github.com/naziri-faiza) · [LinkedIn](https://www.linkedin.com/in/faiza-sadaf-iftekhar-ahmed-43a53b2a6/)
